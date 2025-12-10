@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Llistat — llistat.html</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="llistat-style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">Llistat d'elements</h1>
+      <!-- NAV sense enllaços a PW1/PW2 -->
+      <nav class="top-nav" aria-label="Navegació principal">
+        <ul>
+          <li><a href="index.html">Inici</a></li>
+          <li><a href="llistat.html" aria-current="page">Llistat</a></li>
+          <li><a href="contacte.html">Contacte</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="list-section" aria-labelledby="list-header">
+      <header class="section-header">
+        <h2 id="list-header">Llista principal</h2>
+      </header>
+
+      <article class="list-article">
+        <p class="lead">Pots veure i editar aquí la llista d'elements. Utilitza el formulari per afegir-ne de nous.</p>
+
+        <div class="list-box">
+          <ul class="item-list" id="item-list" aria-live="polite">
+            <li class="list-item"><h5>Element 1 — Títol</h5></li>
+            <li class="list-item"><h5>Element 2 — Títol</h5></li>
+            <li class="list-item"><h5>Element 3 — Títol</h5></li>
+            <li class="list-item"><h5>Element 4 — Títol</h5></li>
+            <li class="list-item"><h5>Element 5 — Títol</h5></li>
+            <li class="list-item"><h5>Element 6 — Títol</h5></li>
+            <li class="list-item"><h5>Element 7 — Títol</h5></li>
+            <li class="list-item"><h5>Element 8 — Títol</h5></li>
+            <li class="list-item"><h5>Element 9 — Títol</h5></li>
+            <li class="list-item"><h5>Element 10 — Títol</h5></li>
+          </ul>
+        </div>
+
+        <footer class="project-footer" style="margin-top:1rem;">
+          <small>Autor: El teu nom — Data: 2025-12-10 — Empresa: La teva empresa</small>
+        </footer>
+      </article>
+    </section>
+
+    <section class="manage-section" aria-labelledby="manage-header" style="margin-top:1.25rem;">
+      <header>
+        <h3 id="manage-header">Afegeix un element</h3>
+      </header>
+
+      <form id="add-item-form" class="add-item-form" novalidate>
+        <label for="new-item-text">Text de l'element</label>
+        <input id="new-item-text" name="text" type="text" placeholder="Ex: Nou Element" required>
+
+        <div class="form-actions">
+          <button type="submit" class="btn">Afegeix element</button>
+          <button type="button" id="clear-list" class="btn btn-secondary">Neteja llista</button>
+        </div>
+
+        <div id="list-status" role="status" aria-live="polite" class="form-status" hidden></div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 — El teu nom o empresa</p>
+    </div>
+  </footer>
+
+  <template id="list-item-template">
+    <li class="list-item">
+      <h5>%%TEXT%%</h5>
+    </li>
+  </template>
+
+  <script>
+    (function () {
+      const form = document.getElementById('add-item-form');
+      const input = document.getElementById('new-item-text');
+      const list = document.getElementById('item-list');
+      const tpl = document.getElementById('list-item-template');
+      const status = document.getElementById('list-status');
+      const clearBtn = document.getElementById('clear-list');
+      const STORAGE_KEY = 'llistat_items_v1';
+
+      function loadItems() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (raw) {
+            const arr = JSON.parse(raw);
+            list.innerHTML = '';
+            arr.forEach(text => appendItemToDOM(text));
+          }
+        } catch (e) {
+          console.warn('No s’han pogut carregar items:', e);
+        }
+      }
+
+      function saveItems() {
+        try {
+          const texts = Array.from(list.querySelectorAll('li')).map(li => li.textContent.trim());
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(texts));
+        } catch (e) {
+          console.warn('No s’han pogut desar items:', e);
+        }
+      }
+
+      function appendItemToDOM(text) {
+        const clone = tpl.content.cloneNode(true);
+        clone.querySelector('h5').textContent = text;
+        list.appendChild(clone);
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        status.hidden = false;
+        status.className = 'form-status';
+        if (!input.value.trim()) {
+          status.classList.add('error');
+          status.textContent = 'Introdueix el text de l’element.';
+          return;
+        }
+        appendItemToDOM(input.value.trim());
+        saveItems();
+        status.classList.remove('error');
+        status.classList.add('success');
+        status.textContent = 'Element afegit.';
+        input.value = '';
+        input.focus();
+        setTimeout(() => status.hidden = true, 1200);
+      });
+
+      clearBtn.addEventListener('click', function () {
+        if (!confirm('Segur que vols esborrar tots els elements de la llista?')) return;
+        list.innerHTML = '';
+        localStorage.removeItem(STORAGE_KEY);
+        status.hidden = false;
+        status.className = 'form-status success';
+        status.textContent = 'Llista netejada.';
+        setTimeout(() => status.hidden = true, 1200);
+      });
+
+      loadItems();
+    })();
+  </script>
+
+  <style>
+    .form-status.success { color: green; margin-top: 0.5rem; }
+    .form-status.error { color: #b91c1c; margin-top: 0.5rem; }
+  </style>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contacte — contacte.html</title>
+
+  <!-- Estils globals i específics -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="contact-style.css">
+
+  <!-- CONSELLS PER EDITAR:
+       - Canvia el <title> i el h1 (.site-title) si vols un nom diferent.
+       - Modifica els textos marcats amb TODO.
+       - Si tens un endpoint per enviar el formulari, posa'l a l'atribut action del <form> i elimina el script de simulació si cal.
+  -->
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">Contacte</h1> <!-- TODO: canvia el títol si cal -->
+      <!-- NAV actualitzat: sense enllaços a PW1/PW2 -->
+      <nav class="top-nav" aria-label="Navegació principal">
+        <ul>
+          <li><a href="index.html">Inici</a></li>
+          <li><a href="llistat.html">Llistat</a></li>
+          <li><a href="contacte.html" aria-current="page">Contacte</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="contact-section">
+      <header class="project-header">
+        <h2>Contacta amb nosaltres</h2> <!-- TODO: canvia subtítol si cal -->
+      </header>
+
+      <article class="contact-article">
+        <h3>Envia'ns un missatge</h3>
+
+        <!-- TODO: posa action + method si tens un backend; ara el formulari es gestiona per JavaScript -->
+        <form id="contact-form" class="contact-form" novalidate>
+          <fieldset>
+            <legend class="visually-hidden">Formulari de contacte</legend>
+
+            <label for="name">Nom i cognoms</label>
+            <input id="name" name="name" type="text" placeholder="Ex. Maria Puig" required>
+
+            <label for="email">Correu electrònic</label>
+            <input id="email" name="email" type="email" placeholder="exemple@correu.cat" required>
+
+            <label for="subject">Assumpte</label>
+            <input id="subject" name="subject" type="text" placeholder="Assumpte del missatge" required>
+
+            <label for="message">Missatge</label>
+            <textarea id="message" name="message" rows="8" placeholder="Explica'ns què necessites..." required></textarea>
+
+            <div class="form-actions">
+              <button type="submit" class="btn">Envia</button>
+              <button type="button" id="clear-btn" class="btn btn-secondary">Neteja</button>
+            </div>
+
+            <div id="form-status" role="status" aria-live="polite" class="form-status" hidden></div>
+          </fieldset>
+        </form>
+
+        <footer class="project-footer" style="margin-top:1rem;">
+          <small>O bé truca al telèfon: <strong>+34 600 000 000</strong> (Horari: 9:00–18:00)</small> <!-- TODO: modifica dades de contacte -->
+        </footer>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 — El teu nom o empresa</p> <!-- TODO -->
+    </div>
+  </footer>
+
+  <script>
+    // Script senzill per validar i simular enviament (editable).
+    // Si tens un backend real posa action + method al form i canvia aquest script per enviar amb fetch.
+    (function () {
+      const form = document.getElementById('contact-form');
+      const status = document.getElementById('form-status');
+      const clearBtn = document.getElementById('clear-btn');
+
+      // Prefiltra amb dades guardades (opcional, facilita edició)
+      try {
+        const saved = localStorage.getItem('contact_last');
+        if (saved) {
+          const data = JSON.parse(saved);
+          if (data.name) document.getElementById('name').value = data.name;
+          if (data.email) document.getElementById('email').value = data.email;
+          if (data.subject) document.getElementById('subject').value = data.subject;
+          if (data.message) document.getElementById('message').value = data.message;
+        }
+      } catch (e) {
+        console.warn('localStorage no accessible', e);
+      }
+
+      clearBtn.addEventListener('click', () => {
+        form.reset();
+        status.hidden = true;
+        localStorage.removeItem('contact_last');
+      });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        status.hidden = false;
+        status.className = 'form-status';
+        status.textContent = 'Enviant...';
+
+        if (!form.checkValidity()) {
+          status.classList.add('error');
+          status.textContent = 'Revisa els camps marcats. Falta informació obligatòria.';
+          return;
+        }
+
+        const data = {
+          name: form.name.value.trim(),
+          email: form.email.value.trim(),
+          subject: form.subject.value.trim(),
+          message: form.message.value.trim(),
+          sentAt: new Date().toISOString()
+        };
+
+        // Simulem enviament; canvia per fetch() si tens endpoint
+        setTimeout(() => {
+          try { localStorage.setItem('contact_last', JSON.stringify(data)); } catch (err) { /* ignore */ }
+
+          status.classList.remove('error');
+          status.classList.add('success');
+          status.textContent = 'Missatge enviat correctament. Gràcies!';
+          // form.reset(); // opcional
+        }, 700);
+      });
+    })();
+  </script>
+
+  <style>
+    /* petites regles d'accessibilitat/estat (pots moure-les a contact-style.css si prefereixes) */
+    .visually-hidden { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; }
+    .form-status.success { color: green; margin-top: 0.8rem; }
+    .form-status.error { color: #b91c1c; margin-top: 0.8rem; }
+  </style>
+</body>
+</html>

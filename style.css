@@ -1,0 +1,125 @@
+/* Estils fàcils d'entendre i variables per canviar ràpidament colors/espais.
+   Modifica les variables a :root per adaptar la teva imatge corporativa. */
+
+:root{
+  --bg: #f7f7f7;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --accent: #0b6efd;
+  --border: #d1d5db;
+  --container-width: 1100px;
+  --radius: 6px;
+  --gap: 1rem;
+  --max-image-height: 380px;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background: var(--bg); color: #111; }
+
+.container { max-width: var(--container-width); margin: 0 auto; padding: 1rem; }
+
+/* Header */
+.site-header {
+  border: 2px solid var(--border);
+  background: var(--card);
+  margin: 1rem 0;
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius);
+}
+.site-title { margin: 0 0 0.5rem 0; }
+.top-nav ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 1rem; justify-content: center; }
+.top-nav a { text-decoration: none; color: var(--accent); font-weight: 600; }
+
+/* Grid de projectes (dues columnes per defecte) */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: calc(var(--gap) * 1.5);
+}
+
+/* Cada 'tarja' de projecte */
+.project {
+  background: var(--card);
+  border: 2px solid var(--border);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 480px;
+  border-radius: var(--radius);
+}
+
+/* Capçalera interna del projecte */
+.project-header {
+  border: 1px solid var(--border);
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.project-header h2 { margin: 0; font-size: 1.05rem; }
+.project-nav ul { display: flex; gap: 0.5rem; list-style: none; padding: 0; margin: 0; }
+.project-nav a { color: var(--accent); text-decoration: none; font-size: 0.9rem; }
+
+/* Article intern */
+.project-article {
+  border: 1px solid var(--border);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+  background: #fff;
+}
+.article-title { border: 1px solid var(--border); padding: 0.5rem; text-align: center; margin: 0; background: #fafafa; }
+.desc, .props { border: 1px solid var(--border); padding: 0.6rem; margin: 0; background: #fff; }
+
+/* Caixa imatge */
+.project-image {
+  border: 1px solid var(--border);
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa;
+}
+.project-image img {
+  max-width: 100%;
+  height: auto;
+  max-height: var(--max-image-height);
+  object-fit: cover;
+  display: block;
+}
+
+/* Footer del projecte */
+.project-footer {
+  border: 1px solid var(--border);
+  padding: 0.5rem;
+  text-align: center;
+  background: #fff;
+  margin-top: auto;
+}
+
+/* Botó d'exemple */
+.btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn:hover { opacity: 0.95; }
+
+/* Peu de pàgina global */
+.site-footer { margin-top: 1rem; padding: 0.75rem 0; text-align: center; color: var(--muted); }
+
+/* Responsive: apila columnes a pantalles petites */
+@media (max-width: 900px) {
+  .projects { grid-template-columns: 1fr; }
+  .site-header { text-align: left; }
+  .top-nav { margin-top: 0.5rem; }
+}

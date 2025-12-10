@@ -1,0 +1,88 @@
+/* Estils específics per la pàgina llistat.
+   Reutilitza variables definides a style.css (si no existeixen, canvia valors aquí). */
+
+:root{
+  --border: #d1d5db;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --accent: #0b6efd;
+  --radius: 6px;
+}
+
+.list-section {
+  border: 2px solid var(--border);
+  background: var(--card);
+  padding: 1rem;
+  border-radius: var(--radius);
+}
+
+.section-header {
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--border);
+  padding: 0.5rem;
+  background: #fafafa;
+}
+
+.list-article {
+  border: 1px solid var(--border);
+  padding: 1rem;
+  background: #fff;
+}
+
+/* Caixa que conté la llista (simula el wireframe interior) */
+.list-box {
+  border: 1px solid var(--border);
+  padding: 1rem;
+  margin-top: 0.75rem;
+  min-height: 360px;
+  background: #fff;
+}
+
+/* Llista d'elements (estil tipus caixes) */
+.item-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.list-item {
+  border: 1px solid var(--border);
+  padding: 0.6rem 0.8rem;
+  background: #fbfbfb;
+  border-radius: 4px;
+}
+.list-item h5 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #111;
+}
+
+/* Formulari addició elements */
+.manage-section {
+  border: 2px solid var(--border);
+  background: var(--card);
+  padding: 0.75rem;
+  border-radius: var(--radius);
+}
+.add-item-form label { display:block; font-weight:600; margin-bottom:0.25rem; }
+.add-item-form input[type="text"]{
+  width:100%;
+  border:1px solid var(--border);
+  padding:0.6rem;
+  border-radius:6px;
+  margin-bottom:0.5rem;
+}
+
+/* Botons */
+.form-actions { display:flex; gap:0.5rem; align-items:center; margin-top:0.25rem; }
+.btn { background: var(--accent); color: white; border: none; padding: 0.5rem 0.9rem; border-radius: 6px; cursor:pointer; font-weight:600; }
+.btn-secondary { background: #e5e7eb; color: #111; border: 1px solid var(--border); }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .list-box { min-height: 220px; }
+  .container { padding: 0.8rem; }
+}
