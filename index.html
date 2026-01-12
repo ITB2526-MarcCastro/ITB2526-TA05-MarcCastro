@@ -1,165 +1,50 @@
-<!doctype html>
-<html lang="ca">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pàgina de projectes — index.html</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfoli - Alumne</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <h1 class="site-title">index.html</h1>
-      <!-- NAV sense enllaços a PW1/PW2 -->
-      <nav class="top-nav" aria-label="Navegació principal">
-        <ul>
-          <li><a href="index.html" aria-current="page">Inici</a></li>
-          <li><a href="llistat.html">Llistat</a></li>
-          <li><a href="contacte.html">Contacte</a></li>
-        </ul>
-      </nav>
-    </div>
+  <header class="header">
+    <h1>Portfoli Personal</h1>
+    <nav class="nav">
+      <a href="index.html">Inici</a>
+      <a href="llistat.html">Projectes</a>
+      <a href="contacte.html">Contacte</a>
+    </nav>
   </header>
 
   <main class="container">
-    <div class="projects" id="projects-list">
+    <section class="projects-grid">
 
-      <!-- Projecte A: títol i imatge clicable cap a pw1.html -->
-      <section class="project" data-id="project-1">
-        <header class="project-header">
-          <!-- Ara el títol és un enllaç a pw1.html (s'ha eliminat la barra amb "Detalls Repositori") -->
-          <h2 class="project-name"><a href="pw1.html" title="Obre Projecte A (PW1)">Projecte A</a></h2>
-        </header>
+      <article class="project-card">
+        <h2>Projecte 1 — BlueWave Solutions</h2>
+        <p>Desenvolupament d’una web corporativa moderna per a una empresa tecnològica fictícia, amb disseny responsive i identitat visual professional.</p>
+        <img src="img/proj1.png" alt="Projecte 1">
+        <a href="PW1.html" class="btn">Veure detall</a>
+      </article>
 
-        <article class="project-article">
-          <h3 class="article-title">Títol de l'article</h3>
-          <p class="desc">Descripció o explicació del projecte. Aquí va un resum curt que explica de què tracta el projecte.</p>
-          <p class="props">Característiques, objectius, resultats, tecnologia utilitzada, etc.</p>
+      <article class="project-card">
+        <h2>Projecte 2 — FitLife Tracker</h2>
+        <p>Prototip d’una aplicació mòbil per al seguiment d’hàbits saludables, activitat física i objectius personals.</p>
+        <img src="img/proj2.png" alt="Projecte 2">
+        <a href="PW2.html" class="btn">Veure detall</a>
+      </article>
 
-          <figure class="project-image">
-            <!-- Enllaç a pw1.html -->
-            <a href="pw1.html" title="Obre Projecte A (PW1)">
-              <img src="https://via.placeholder.com/600x400?text=Imatge+Projecte+A" alt="Imatge representativa del projecte A">
-            </a>
-            <figcaption>Imatge del projecte A — click per obrir PW1</figcaption>
-          </figure>
-
-          <footer class="project-footer">
-            <small>Autor: Joan Pérez — Data: 2025-12-10 — Empresa: Exemple S.L.</small>
-          </footer>
-        </article>
-      </section>
-
-      <!-- Projecte B: títol i imatge clicable cap a pw2.html -->
-      <section class="project" data-id="project-2">
-        <header class="project-header">
-          <!-- Ara el títol és un enllaç a pw2.html -->
-          <h2 class="project-name"><a href="pw2.html" title="Obre Projecte B (PW2)">Projecte B</a></h2>
-        </header>
-
-        <article class="project-article">
-          <h3 class="article-title">Títol de l'article</h3>
-          <p class="desc">Descripció o explicació del projecte B.</p>
-          <p class="props">Característiques, objectius, resultats, tecnologia utilitzada, etc.</p>
-
-          <figure class="project-image">
-            <!-- Enllaç a pw2.html -->
-            <a href="pw2.html" title="Obre Projecte B (PW2)">
-              <img src="https://via.placeholder.com/600x400?text=Imatge+Projecte+B" alt="Imatge representativa del projecte B">
-            </a>
-            <figcaption>Imatge del projecte B — click per obrir PW2</figcaption>
-          </figure>
-
-          <footer class="project-footer">
-            <small>Autor: Maria López — Data: 2025-12-10 — Empresa: Exemple S.L.</small>
-          </footer>
-        </article>
-      </section>
-
-    </div>
-
-    <div style="margin-top:1rem; text-align:center;">
-      <button id="add-sample" class="btn">Afegeix projecte de mostra</button>
-    </div>
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>© 2025 Exemple S.L. — Tots els drets reservats</p>
-    </div>
+  <footer class="footer">
+    <p>&copy; 2025 Alumne - Xarxes socials</p>
   </footer>
 
-  <!-- Plantilla per afegir projectes: s'ha eliminat la barra amb enllaços interns -->
-  <template id="project-template">
-    <section class="project" data-id="">
-      <header class="project-header">
-        <h2 class="project-name"><a href="%%PAGE_LINK%%">%%NAME%%</a></h2>
-      </header>
+  <div id="pageTimer" aria-live="polite">
+    <span class="pt-icon">⏱️</span><span class="pt-time">00:00</span>
+  </div>
 
-      <article class="project-article">
-        <h3 class="article-title">%%TITLE%%</h3>
-        <p class="desc">%%DESC%%</p>
-        <p class="props">%%PROPS%%</p>
-
-        <figure class="project-image">
-          <a href="%%PAGE_LINK%%"><img src="%%IMG_SRC%%" alt="Imatge %%NAME%%"></a>
-          <figcaption>%%IMG_CAPTION%%</figcaption>
-        </figure>
-
-        <footer class="project-footer">
-          <small>Autor: %%AUTHOR%% — Data: %%DATE%% — Empresa: %%COMPANY%%</small>
-        </footer>
-      </article>
-    </section>
-  </template>
-
-  <script>
-    // Funció per afegir projectes (editable). Defineix pageLink per enllaçar a pw1/pw2
-    function addProject(data) {
-      const tpl = document.getElementById('project-template');
-      const clone = tpl.content.cloneNode(true);
-      const section = clone.querySelector('.project');
-      section.dataset.id = data.id || 'p-' + Date.now();
-
-      // Títol (enllaç)
-      const titleLink = clone.querySelector('.project-name a');
-      titleLink.href = data.pageLink || '#';
-      titleLink.textContent = data.name || 'Sense nom';
-
-      clone.querySelector('.article-title').textContent = data.title || '';
-      clone.querySelector('.desc').textContent = data.description || '';
-      clone.querySelector('.props').textContent = data.props || '';
-
-      const a = clone.querySelector('.project-image a');
-      a.href = data.pageLink || '#';
-
-      const img = clone.querySelector('img');
-      img.src = data.img || 'https://via.placeholder.com/600x380?text=Sense+Imatge';
-      img.alt = data.imgAlt || data.name || 'Imatge projecte';
-      clone.querySelector('figcaption').textContent = data.imgCaption || '';
-      clone.querySelector('.project-footer small').textContent =
-        'Autor: ' + (data.author || '-') + ' — Data: ' + (data.date || '-') + ' — Empresa: ' + (data.company || '-');
-
-      document.getElementById('projects-list').appendChild(clone);
-    }
-
-    // Exemple: botó per afegir projecte de mostra amb enllaç a pw1/pw2
-    document.getElementById('add-sample').addEventListener('click', function () {
-      addProject({
-        id: 'sample-' + Math.floor(Math.random() * 1000),
-        name: 'Projecte nou',
-        title: 'Títol del projecte nou',
-        description: 'Breu descripció del projecte nou. Canvia-la fàcilment.',
-        props: 'Tecnologies: HTML, CSS, JS. Objectius: explicar el projecte.',
-        img: 'https://via.placeholder.com/600x380?text=Projecte+Nou',
-        imgAlt: 'Projecte nou',
-        imgCaption: 'Captura del projecte nou',
-        author: 'El teu nom',
-        date: new Date().toISOString().split('T')[0],
-        company: 'La teva empresa',
-        pageLink: 'pw1.html' // canvia a 'pw2.html' si vols crear un enllaç cap a PW2
-      });
-    });
-  </script>
+  <canvas id="particles"></canvas>
+  <script src="script.js"></script>
 </body>
 </html>

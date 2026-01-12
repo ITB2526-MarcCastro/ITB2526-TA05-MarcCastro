@@ -1,125 +1,372 @@
-/* Estils fàcils d'entendre i variables per canviar ràpidament colors/espais.
-   Modifica les variables a :root per adaptar la teva imatge corporativa. */
-
-:root{
-  --bg: #f7f7f7;
-  --card: #ffffff;
-  --muted: #6b7280;
-  --accent: #0b6efd;
-  --border: #d1d5db;
-  --container-width: 1100px;
-  --radius: 6px;
-  --gap: 1rem;
-  --max-image-height: 380px;
+/* ============================================================
+   RESET
+   ============================================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-* { box-sizing: border-box; }
-html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background: var(--bg); color: #111; }
-
-.container { max-width: var(--container-width); margin: 0 auto; padding: 1rem; }
-
-/* Header */
-.site-header {
-  border: 2px solid var(--border);
-  background: var(--card);
-  margin: 1rem 0;
-  padding: 0.8rem 1rem;
-  border-radius: var(--radius);
-}
-.site-title { margin: 0 0 0.5rem 0; }
-.top-nav ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 1rem; justify-content: center; }
-.top-nav a { text-decoration: none; color: var(--accent); font-weight: 600; }
-
-/* Grid de projectes (dues columnes per defecte) */
-.projects {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: calc(var(--gap) * 1.5);
-}
-
-/* Cada 'tarja' de projecte */
-.project {
-  background: var(--card);
-  border: 2px solid var(--border);
+/* ============================================================
+   BASE
+   ============================================================ */
+body {
+  font-family: 'Inter', 'Orbitron', sans-serif;
+  background: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
   padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  min-height: 480px;
-  border-radius: var(--radius);
 }
 
-/* Capçalera interna del projecte */
-.project-header {
-  border: 1px solid var(--border);
-  padding: 0.5rem;
+/* Contenidor central fluid */
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
-}
-.project-header h2 { margin: 0; font-size: 1.05rem; }
-.project-nav ul { display: flex; gap: 0.5rem; list-style: none; padding: 0; margin: 0; }
-.project-nav a { color: var(--accent); text-decoration: none; font-size: 0.9rem; }
-
-/* Article intern */
-.project-article {
-  border: 1px solid var(--border);
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  flex: 1;
-  background: #fff;
-}
-.article-title { border: 1px solid var(--border); padding: 0.5rem; text-align: center; margin: 0; background: #fafafa; }
-.desc, .props { border: 1px solid var(--border); padding: 0.6rem; margin: 0; background: #fff; }
-
-/* Caixa imatge */
-.project-image {
-  border: 1px solid var(--border);
-  padding: 0.75rem;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background: #fafafa;
-}
-.project-image img {
-  max-width: 100%;
-  height: auto;
-  max-height: var(--max-image-height);
-  object-fit: cover;
-  display: block;
+  padding: 1rem 0;
+  border-bottom: 2px solid #e0e0e0;
 }
 
-/* Footer del projecte */
-.project-footer {
-  border: 1px solid var(--border);
-  padding: 0.5rem;
-  text-align: center;
-  background: #fff;
-  margin-top: auto;
+.header h1 {
+  font-size: 2rem;
+  color: #0077ff;
+  font-weight: 700;
 }
 
-/* Botó d'exemple */
-.btn {
-  background: var(--accent);
-  color: white;
-  border: none;
-  padding: 0.6rem 1rem;
-  border-radius: 6px;
-  cursor: pointer;
+/* ============================================================
+   NAVEGACIÓ
+   ============================================================ */
+.nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav a {
+  color: #555;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav a:hover {
+  color: #0077ff;
+}
+
+/* ============================================================
+   SECCIONS I ARTICLES
+   ============================================================ */
+main {
+  padding: 2rem 0;
+}
+
+section,
+.projects-grid,
+.project-detail {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.project-card,
+.detail-block,
+article {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 2rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover,
+.detail-block:hover,
+article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+article h2,
+.detail-block h2 {
+  color: #0077ff;
+  margin-bottom: 1rem;
+}
+
+article p {
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+article img,
+.detail-block img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* ============================================================
+   LLISTAT DE PROJECTES
+   ============================================================ */
+.project-list-wrapper {
+  max-width: 900px;
+  margin: auto;
+}
+
+ul.project-list {
+  list-style: none;
+}
+
+ul.project-list li {
+  background: #ffffff;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+ul.project-list li a {
+  color: #0077ff;
+  text-decoration: none;
   font-weight: 600;
 }
-.btn:hover { opacity: 0.95; }
 
-/* Peu de pàgina global */
-.site-footer { margin-top: 1rem; padding: 0.75rem 0; text-align: center; color: var(--muted); }
+ul.project-list li a:hover {
+  text-decoration: underline;
+}
 
-/* Responsive: apila columnes a pantalles petites */
-@media (max-width: 900px) {
-  .projects { grid-template-columns: 1fr; }
-  .site-header { text-align: left; }
-  .top-nav { margin-top: 0.5rem; }
+/* ============================================================
+   FORMULARI
+   ============================================================ */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-width: 800px;
+  margin: 2rem auto;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 2.5rem;
+  border-radius: 15px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+form::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 15px;
+  padding: 3px;
+  background: linear-gradient(135deg, #0077ff, #00ffc8, #ff00aa);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+form h2 {
+  text-align: center;
+  color: #0077ff;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+label {
+  font-weight: 600;
+  color: #0077ff;
+}
+
+input,
+textarea {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f9f9f9;
+  color: #333;
+  font-size: 1rem;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #0077ff;
+  box-shadow: 0 0 10px rgba(0,119,255,0.3);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,119,255,0.4);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  border-top: 2px solid #e0e0e0;
+  margin-top: 2rem;
+  color: #777;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  section,
+  .projects-grid,
+  .project-detail {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   SLIDER DE TEMA
+   ============================================================ */
+#themeSlider {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 100px;
+  height: 20px;
+  background: #ccc;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+#sliderHandle {
+  width: 20px;
+  height: 20px;
+  background: #666;
+  border-radius: 50%;
+  position: relative;
+  left: 0;
+  transition: left 0.2s ease, background 0.2s ease;
+}
+
+#sliderHandle:hover {
+  background: #444;
+}
+
+/* ============================================================
+   MODE FOSC
+   ============================================================ */
+.dark-mode {
+  background: #121212;
+  color: #e0e0e0;
+}
+
+.dark-mode .header {
+  border-bottom: 2px solid #333;
+}
+
+.dark-mode .header h1 {
+  color: #00ffc8;
+}
+
+.dark-mode .nav a {
+  color: #e0e0e0;
+}
+
+.dark-mode .nav a:hover {
+  color: #00ffc8;
+}
+
+.dark-mode article,
+.dark-mode .project-card,
+.dark-mode .detail-block {
+  background: #1e1e1e;
+  border: 1px solid #333;
+}
+
+.dark-mode article h2 {
+  color: #00ffc8;
+}
+
+.dark-mode article p {
+  color: #ccc;
+}
+
+.dark-mode ul.project-list li {
+  background: #1e1e1e;
+  border: 1px solid #333;
+}
+
+.dark-mode ul.project-list li a {
+  color: #00ffc8;
+}
+
+.dark-mode .footer {
+  border-top: 2px solid #333;
+  color: #aaa;
+}
+
+.dark-mode #themeSlider {
+  background: #444;
+}
+
+.dark-mode #sliderHandle {
+  background: #00ffc8;
+}
+
+/* ============================================================
+   PARTÍCULES
+   ============================================================ */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: transparent;
+}
+
+/* ============================================================
+   TIMER
+   ============================================================ */
+#pageTimer {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  color: #fff;
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  z-index: 2000;
+  pointer-events: none;
+}
+
+.dark-mode #pageTimer {
+  color: #e6e6e6;
+  background: rgba(255,255,255,0.16);
+}
+
+.pt-time {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.4px;
 }

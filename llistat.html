@@ -1,162 +1,82 @@
-<!doctype html>
-<html lang="ca">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Llistat — llistat.html</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Llistat de Projectes</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="llistat-style.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <h1 class="site-title">Llistat d'elements</h1>
-      <!-- NAV sense enllaços a PW1/PW2 -->
-      <nav class="top-nav" aria-label="Navegació principal">
-        <ul>
-          <li><a href="index.html">Inici</a></li>
-          <li><a href="llistat.html" aria-current="page">Llistat</a></li>
-          <li><a href="contacte.html">Contacte</a></li>
-        </ul>
-      </nav>
-    </div>
+  <header class="header">
+    <h1>Llistat de Projectes</h1>
+    <nav class="nav">
+      <a href="index.html">Inici</a>
+      <a href="llistat.html">Projectes</a>
+      <a href="contacte.html">Contacte</a>
+    </nav>
   </header>
 
   <main class="container">
-    <section class="list-section" aria-labelledby="list-header">
-      <header class="section-header">
-        <h2 id="list-header">Llista principal</h2>
-      </header>
+    <article class="project-list-wrapper">
+      <h2>Tots els projectes</h2>
 
-      <article class="list-article">
-        <p class="lead">Pots veure i editar aquí la llista d'elements. Utilitza el formulari per afegir-ne de nous.</p>
-
-        <div class="list-box">
-          <ul class="item-list" id="item-list" aria-live="polite">
-            <li class="list-item"><h5>Element 1 — Títol</h5></li>
-            <li class="list-item"><h5>Element 2 — Títol</h5></li>
-            <li class="list-item"><h5>Element 3 — Títol</h5></li>
-            <li class="list-item"><h5>Element 4 — Títol</h5></li>
-            <li class="list-item"><h5>Element 5 — Títol</h5></li>
-            <li class="list-item"><h5>Element 6 — Títol</h5></li>
-            <li class="list-item"><h5>Element 7 — Títol</h5></li>
-            <li class="list-item"><h5>Element 8 — Títol</h5></li>
-            <li class="list-item"><h5>Element 9 — Títol</h5></li>
-            <li class="list-item"><h5>Element 10 — Títol</h5></li>
-          </ul>
-        </div>
-
-        <footer class="project-footer" style="margin-top:1rem;">
-          <small>Autor: El teu nom — Data: 2025-12-10 — Empresa: La teva empresa</small>
-        </footer>
-      </article>
-    </section>
-
-    <section class="manage-section" aria-labelledby="manage-header" style="margin-top:1.25rem;">
-      <header>
-        <h3 id="manage-header">Afegeix un element</h3>
-      </header>
-
-      <form id="add-item-form" class="add-item-form" novalidate>
-        <label for="new-item-text">Text de l'element</label>
-        <input id="new-item-text" name="text" type="text" placeholder="Ex: Nou Element" required>
-
-        <div class="form-actions">
-          <button type="submit" class="btn">Afegeix element</button>
-          <button type="button" id="clear-list" class="btn btn-secondary">Neteja llista</button>
-        </div>
-
-        <div id="list-status" role="status" aria-live="polite" class="form-status" hidden></div>
-      </form>
-    </section>
+      <ul class="project-list">
+        <li><a href="PW1.html">Projecte 1 — Web corporativa “BlueWave Solutions”</a></li>
+        <li><a href="PW2.html">Projecte 2 — Aplicació mòbil “FitLife Tracker”</a></li>
+        <li><a href="#">Projecte 3 — E-commerce</a></li>
+        <li><a href="#">Projecte 4 — Blog personal</a></li>
+        <li><a href="#">Projecte 5 — Gestor de tasques</a></li>
+        <li><a href="#">Projecte 6 — Plataforma educativa</a></li>
+        <li><a href="#">Projecte 7 — Portfolio fotogràfic</a></li>
+        <li><a href="#">Projecte 8 — Dashboard analític</a></li>
+        <li><a href="#">Projecte 9 — Sistema de reserves</a></li>
+        <li><a href="#">Projecte 10 — CRM empresarial</a></li>
+        <li><a href="#">Projecte 11 — Marketplace digital</a></li>
+        <li><a href="#">Projecte 12 — Aplicació de fitness</a></li>
+        <li><a href="#">Projecte 13 — Xarxa social minimalista</a></li>
+        <li><a href="#">Projecte 14 — Gestor de notes</a></li>
+        <li><a href="#">Projecte 15 — Web de notícies</a></li>
+        <li><a href="#">Projecte 16 — Plataforma de streaming</a></li>
+        <li><a href="#">Projecte 17 — Gestor de contactes</a></li>
+        <li><a href="#">Projecte 18 — Aplicació de cuina</a></li>
+        <li><a href="#">Projecte 19 — Portal immobiliari</a></li>
+        <li><a href="#">Projecte 20 — Web de viatges</a></li>
+        <li><a href="#">Projecte 21 — Botiga online de moda</a></li>
+        <li><a href="#">Projecte 22 — Sistema de votacions</a></li>
+        <li><a href="#">Projecte 23 — Aplicació de música</a></li>
+        <li><a href="#">Projecte 24 — Gestor de finances personals</a></li>
+        <li><a href="#">Projecte 25 — Web de cinema</a></li>
+        <li><a href="#">Projecte 26 — Aplicació de salut</a></li>
+        <li><a href="#">Projecte 27 — Plataforma de podcasts</a></li>
+        <li><a href="#">Projecte 28 — Gestor de projectes</a></li>
+        <li><a href="#">Projecte 29 — Web de fotografia</a></li>
+        <li><a href="#">Projecte 30 — Aplicació de transport</a></li>
+        <li><a href="#">Projecte 31 — Portal d’esports</a></li>
+        <li><a href="#">Projecte 32 — Web de llibres</a></li>
+        <li><a href="#">Projecte 33 — Aplicació de meditació</a></li>
+        <li><a href="#">Projecte 34 — Plataforma de cursos online</a></li>
+        <li><a href="#">Projecte 35 — Gestor d’inventari</a></li>
+        <li><a href="#">Projecte 36 — Web de tecnologia</a></li>
+        <li><a href="#">Projecte 37 — Aplicació de clima</a></li>
+        <li><a href="#">Projecte 38 — Portal gastronòmic</a></li>
+        <li><a href="#">Projecte 39 — Web d’art digital</a></li>
+        <li><a href="#">Projecte 40 — Aplicació de lectura</a></li>
+        <li><a href="#">Projecte 41 — Plataforma de voluntariat</a></li>
+        <li><a href="#">Projecte 42 — Gestor d’esdeveniments</a></li>
+        <li><a href="#">Projecte 43 — Web de videojocs</a></li>
+      </ul>
+    </article>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>© 2025 — El teu nom o empresa</p>
-    </div>
+  <footer class="footer">
+    <p>Autor: Alumne | Data: 2025 | Origen: Portfoli Web</p>
   </footer>
 
-  <template id="list-item-template">
-    <li class="list-item">
-      <h5>%%TEXT%%</h5>
-    </li>
-  </template>
+  <div id="pageTimer" aria-live="polite">
+    <span class="pt-icon">⏱️</span><span class="pt-time">00:00</span>
+  </div>
 
-  <script>
-    (function () {
-      const form = document.getElementById('add-item-form');
-      const input = document.getElementById('new-item-text');
-      const list = document.getElementById('item-list');
-      const tpl = document.getElementById('list-item-template');
-      const status = document.getElementById('list-status');
-      const clearBtn = document.getElementById('clear-list');
-      const STORAGE_KEY = 'llistat_items_v1';
-
-      function loadItems() {
-        try {
-          const raw = localStorage.getItem(STORAGE_KEY);
-          if (raw) {
-            const arr = JSON.parse(raw);
-            list.innerHTML = '';
-            arr.forEach(text => appendItemToDOM(text));
-          }
-        } catch (e) {
-          console.warn('No s’han pogut carregar items:', e);
-        }
-      }
-
-      function saveItems() {
-        try {
-          const texts = Array.from(list.querySelectorAll('li')).map(li => li.textContent.trim());
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(texts));
-        } catch (e) {
-          console.warn('No s’han pogut desar items:', e);
-        }
-      }
-
-      function appendItemToDOM(text) {
-        const clone = tpl.content.cloneNode(true);
-        clone.querySelector('h5').textContent = text;
-        list.appendChild(clone);
-      }
-
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        status.hidden = false;
-        status.className = 'form-status';
-        if (!input.value.trim()) {
-          status.classList.add('error');
-          status.textContent = 'Introdueix el text de l’element.';
-          return;
-        }
-        appendItemToDOM(input.value.trim());
-        saveItems();
-        status.classList.remove('error');
-        status.classList.add('success');
-        status.textContent = 'Element afegit.';
-        input.value = '';
-        input.focus();
-        setTimeout(() => status.hidden = true, 1200);
-      });
-
-      clearBtn.addEventListener('click', function () {
-        if (!confirm('Segur que vols esborrar tots els elements de la llista?')) return;
-        list.innerHTML = '';
-        localStorage.removeItem(STORAGE_KEY);
-        status.hidden = false;
-        status.className = 'form-status success';
-        status.textContent = 'Llista netejada.';
-        setTimeout(() => status.hidden = true, 1200);
-      });
-
-      loadItems();
-    })();
-  </script>
-
-  <style>
-    .form-status.success { color: green; margin-top: 0.5rem; }
-    .form-status.error { color: #b91c1c; margin-top: 0.5rem; }
-  </style>
+  <canvas id="particles"></canvas>
+  <script src="script.js"></script>
 </body>
 </html>
